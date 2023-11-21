@@ -22,3 +22,13 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
 	move_and_slide()
+	if(Input.is_mouse_button_pressed(1)):
+		generate_bullet()
+	
+func generate_bullet():
+	var marker:Node2D = get_node("WeaponPosition/Marker2D")
+	var weapon_position:Node2D = get_node("WeaponPosition")
+	var bullet_standard = load("res://scenes/entities/bullet/StandardBullet/StandardBullet.tscn").instantiate()
+	bullet_standard.bullet_direction = (get_global_mouse_position() - marker.global_position).normalized()
+	bullet_standard.position = marker.global_position
+	get_parent().add_child(bullet_standard)

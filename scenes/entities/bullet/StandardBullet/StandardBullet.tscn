@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://datxiqa7c2s2v"]
+
+[ext_resource type="Script" path="res://scenes/entities/bullet/StandardBullet/StandardBullet.gd" id="1_ed2vc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l2dnk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_au2t5"]
+radius = 4.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0hi4"]
+
+[node name="StandardBullet" type="CharacterBody2D"]
+script = ExtResource("1_ed2vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8.5, 8.5)
+texture = SubResource("CanvasTexture_l2dnk")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionHitBox" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_au2t5")
+
+[node name="CollisionBodyBullet" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x0hi4")
+disabled = true

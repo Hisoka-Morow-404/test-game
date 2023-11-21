@@ -7,20 +7,21 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_e276d"]
 radius = 58.2151
 
-[node name="Player" type="CharacterBody2D"]
-slide_on_ceiling = false
+[node name="PlayerMain" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_bsig4")
 
-[node name="Bug" type="Sprite2D" parent="."]
+[node name="Bug" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_1lhme")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_e276d")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="WeaponPosition" type="Node2D" parent="."]
+[node name="WeaponPosition" type="Node2D" parent="Player"]
 script = ExtResource("3_bd5ht")
 
-[node name="Marker2D" type="Marker2D" parent="WeaponPosition"]
+[node name="Marker2D" type="Node2D" parent="Player/WeaponPosition"]
 position = Vector2(112, 0)
