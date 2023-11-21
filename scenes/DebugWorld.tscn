@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5r0kb2knu6x5"]
+[gd_scene load_steps=7 format=3 uid="uid://b7obuxf6xskb6"]
 
 [ext_resource type="Texture2D" uid="uid://b0whgifjohsah" path="res://scenes/entities/DebugWorld/pixil-frame-0.png" id="1_0q8f0"]
+[ext_resource type="PackedScene" uid="uid://clcjpn7ppaips" path="res://scenes/entities/Player/Player.tscn" id="2_sv0gs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pys3i"]
 texture = ExtResource("1_0q8f0")
@@ -48,3 +49,6 @@ shape = SubResource("RectangleShape2D_6baff")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Wall4"]
 position = Vector2(-824, 64)
 shape = SubResource("RectangleShape2D_6baff")
+
+[node name="Player" parent="." instance=ExtResource("2_sv0gs")]
+position = Vector2(-225, 206)

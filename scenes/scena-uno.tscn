@@ -10,3 +10,6 @@ position = Vector2(240, 232)
 scale = Vector2(1.30544, 1.3003)
 texture = ExtResource("1_3n117")
 script = ExtResource("2_dox2v")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+safe_margin = 0.001
