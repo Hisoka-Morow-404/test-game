@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb4bnimw6hajr"]
+
+[ext_resource type="Texture2D" uid="uid://bl8dka1pkc1ap" path="res://scenes/entities/Player/Small-8-Direction-Characters_by_AxulArt.png" id="1_e6y53"]
+[ext_resource type="Script" path="res://scenes/entities/enemy/Enemy.gd" id="1_v0647"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auyrq"]
+size = Vector2(18, 24)
+
+[node name="EnemyMain" type="Node"]
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+script = ExtResource("1_v0647")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(1.378, 2)
+texture = ExtResource("1_e6y53")
+hframes = 8
+vframes = 12
+frame = 84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_auyrq")
