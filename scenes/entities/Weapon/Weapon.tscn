@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1nfy4j8dqirv"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_m5ghi"]
+[ext_resource type="Texture2D" uid="uid://bm7vpf7u1co1s" path="res://scenes/entities/Weapon/Cannon.png" id="1_ibhw5"]
 
 [node name="Weapon" type="Sprite2D"]
-visible = false
-scale = Vector2(16.5, 16.5)
-texture = SubResource("CanvasTexture_m5ghi")
+rotation = 1.5708
+texture = ExtResource("1_ibhw5")
