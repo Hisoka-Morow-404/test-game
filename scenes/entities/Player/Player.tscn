@@ -52,6 +52,40 @@ tracks/0/keys = {
 "values": [10, 18, 26, 18]
 }
 
+[sub_resource type="Animation" id="Animation_b2ewb"]
+resource_name = "left_down_diag"
+length = 0.85
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 21, 29, 21]
+}
+
+[sub_resource type="Animation" id="Animation_mmwjk"]
+resource_name = "left_up_diag"
+length = 0.85
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 23, 31, 23]
+}
+
 [sub_resource type="Animation" id="Animation_p3y1i"]
 resource_name = "runDown"
 length = 0.85
@@ -86,40 +120,6 @@ tracks/0/keys = {
 "values": [8, 16, 24, 16]
 }
 
-[sub_resource type="Animation" id="Animation_mmwjk"]
-resource_name = "left_up_diag"
-length = 0.85
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bug:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [15, 23, 31, 23]
-}
-
-[sub_resource type="Animation" id="Animation_b2ewb"]
-resource_name = "left_down_diag"
-length = 0.85
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bug:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [13, 21, 29, 21]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2x1b6"]
 _data = {
 "Idle": SubResource("Animation_py4mt"),
@@ -134,9 +134,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_e276d"]
 radius = 16.0
 
-[node name="PlayerMain" type="Node"]
+[node name="PlayerMain" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 script = ExtResource("1_bsig4")
 
 [node name="Bug" type="Sprite2D" parent="Player"]

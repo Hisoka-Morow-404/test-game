@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b0whgifjohsah" path="res://scenes/entities/DebugWorld/pixil-frame-0.png" id="1_0q8f0"]
 [ext_resource type="Texture2D" uid="uid://qmyu6xrq3tm" path="res://scenes/entities/DebugWorld/tileMap.png" id="1_lraoy"]
+[ext_resource type="Script" path="res://scenes/DebugWorld.gd" id="1_qthob"]
 [ext_resource type="PackedScene" uid="uid://clcjpn7ppaips" path="res://scenes/entities/Player/Player.tscn" id="2_sv0gs"]
-[ext_resource type="PackedScene" uid="uid://bb4bnimw6hajr" path="res://scenes/entities/enemy/Enemy.tscn" id="4_jcnh7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ot57t"]
 texture = ExtResource("1_lraoy")
@@ -32,8 +32,10 @@ size = Vector2(1750, 18)
 size = Vector2(16, 672)
 
 [node name="DebugWorld" type="Node"]
+script = ExtResource("1_qthob")
 
 [node name="Map" type="Node2D" parent="."]
+position = Vector2(835, 273)
 
 [node name="TileMap" type="TileMap" parent="Map"]
 tile_set = SubResource("TileSet_rrw15")
@@ -65,5 +67,4 @@ position = Vector2(-824, 64)
 shape = SubResource("RectangleShape2D_6baff")
 
 [node name="Player" parent="." instance=ExtResource("2_sv0gs")]
-
-[node name="EnemyMain" parent="." instance=ExtResource("4_jcnh7")]
+position = Vector2(854, 349)

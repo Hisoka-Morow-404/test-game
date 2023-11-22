@@ -13,3 +13,11 @@ func _physics_process(delta):
 func _on_hit_box_body_entered(body):
 	if body is StaticBody2D:
 		queue_free()
+	
+	if "Enemy" in body.get_groups():
+		queue_free()
+		body.hp-=10
+		print(body.hp)
+		
+	
+	
