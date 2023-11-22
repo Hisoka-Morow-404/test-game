@@ -24,3 +24,7 @@ shape = SubResource("CircleShape2D_au2t5")
 [node name="CollisionBodyBullet" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x0hi4")
 disabled = true
+
+[connection signal="area_shape_entered" from="HitBox" to="." method="_on_hit_box_area_shape_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="input_event" from="HitBox" to="." method="_on_hit_box_input_event"]

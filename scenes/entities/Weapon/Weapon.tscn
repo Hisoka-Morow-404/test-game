@@ -1,7 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1nfy4j8dqirv"]
 
-[ext_resource type="Texture2D" uid="uid://bm7vpf7u1co1s" path="res://scenes/entities/Weapon/Cannon.png" id="1_ibhw5"]
+[ext_resource type="Texture2D" uid="uid://bm7vpf7u1co1s" path="res://scenes/entities/Weapon/Cannon.png" id="1_we83b"]
 
 [node name="Weapon" type="Sprite2D"]
+position = Vector2(8, 0)
 rotation = 1.5708
-texture = ExtResource("1_ibhw5")
+texture = ExtResource("1_we83b")
