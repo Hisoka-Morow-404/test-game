@@ -22,17 +22,21 @@ func _physics_process(delta):
 
 	if directionX:
 		$Bug/Animation.play("RunSide")
-		if velocity.x < 0 : $Bug.flip_h = true 
+		if directionX < 0 : $Bug.flip_h = true 
 		else : $Bug.flip_h = false
 		velocity.x = directionX * SPEED
 	else:
-		$Bug/Animation.play("Idle")
+		#$Bug/Animation.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if directionY:
+		if directionY<0 :$Bug/Animation.play("runUp")
+		elif directionY>0: $Bug/Animation.play("runDown")
 		velocity.y = directionY * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
+		
+	if not directionX and not directionY: $Bug/Animation.play("Idle")	
 	move_and_slide()
 	if(Input.is_mouse_button_pressed(1) && timer.is_stopped()):
 		timer.start()
