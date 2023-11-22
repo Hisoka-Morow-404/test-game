@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 450.0
+const SPEED = 250.0
 var timer = Timer.new()
 
 
