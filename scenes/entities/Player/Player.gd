@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 450.0
 var timer = Timer.new()
 
 
@@ -21,8 +21,12 @@ func _physics_process(delta):
 
 
 	if directionX:
+		$Bug/Animation.play("RunSide")
+		if velocity.x < 0 : $Bug.flip_h = true 
+		else : $Bug.flip_h = false
 		velocity.x = directionX * SPEED
 	else:
+		$Bug/Animation.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if directionY:
 		velocity.y = directionY * SPEED

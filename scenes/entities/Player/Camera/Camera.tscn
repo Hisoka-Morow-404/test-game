@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpvtnauqdcibu"]
+
+[ext_resource type="PackedScene" uid="uid://cyx648fc4vi5h" path="res://scenes/entities/Player/HealthBar/HealthBar.tscn" id="1_tml24"]
+
+[node name="Camera2D" type="Camera2D"]
+
+[node name="HealthBar" parent="." instance=ExtResource("1_tml24")]
+offset_left = -576.0
+offset_top = -320.0
+offset_right = 576.0
+offset_bottom = 320.0

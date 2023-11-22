@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyx648fc4vi5h"]
+
+[ext_resource type="Texture2D" uid="uid://dvelcewyv51nw" path="res://scenes/entities/Player/HealthBar/Energy.png" id="1_8hf2n"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Bar" type="Node2D" parent="."]
+position = Vector2(30, 45)
+
+[node name="Energy1" type="Sprite2D" parent="Bar"]
+texture = ExtResource("1_8hf2n")
+
+[node name="Energy2" type="Sprite2D" parent="Bar"]
+position = Vector2(40, 0)
+texture = ExtResource("1_8hf2n")
+
+[node name="Energy3" type="Sprite2D" parent="Bar"]
+position = Vector2(80, 0)
+texture = ExtResource("1_8hf2n")
