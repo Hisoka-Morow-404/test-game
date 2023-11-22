@@ -13,35 +13,9 @@ func _ready():
 	add_child(timer)
 
 
-func _physics_process(delta):
-	
-
-	var directionX = Input.get_axis("ui_left", "ui_right")
-	var directionY = Input.get_axis("ui_up", "ui_down")
-	
-
-
-	if directionX:
-		$Bug/Animation.play("RunSide")
-		if directionX < 0 : $Bug.flip_h = true 
-		else : $Bug.flip_h = false
-		velocity.x = directionX * SPEED
-	else:
-		#$Bug/Animation.play("Idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if directionY:
-		if directionY<0 :$Bug/Animation.play("runUp")
-		elif directionY>0: $Bug/Animation.play("runDown")
-		velocity.y = directionY * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
-		
-	if not directionX and not directionY: $Bug/Animation.play("Idle")	
-	move_and_slide()
-	if(Input.is_mouse_button_pressed(1) && timer.is_stopped()):
-		timer.start()
-		generate_bullet()
+func _physics_process(delta):	
+	moveAndAnimate(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	handleActions()
 	
 func generate_bullet():
 	var marker:Node2D = get_node("WeaponPosition/Marker2D")
@@ -49,3 +23,42 @@ func generate_bullet():
 	bullet_standard.bullet_direction = (get_global_mouse_position() - marker.global_position).normalized()
 	bullet_standard.position = marker.global_position
 	get_parent().add_child(bullet_standard)
+
+func moveAndAnimate(x,y):
+	move(x,y)
+	animate(x,y)
+	
+func move(x,y):
+	if x:
+		velocity.x = x * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if y:
+		
+		velocity.y = y * SPEED
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	move_and_slide()
+	
+func animate(x,y):
+	if x:
+		if !y:
+			$Bug/Animation.play("RunSide")
+			$Bug.flip_h = x < 0
+		if y<0 : #leftdiag
+			$Bug/Animation.play("left_up_diag")
+			$Bug.flip_h = x > 0
+		elif y>0:
+			$Bug/Animation.play("left_down_diag")
+			$Bug.flip_h = x > 0
+	elif y:
+		if y<0 :$Bug/Animation.play("runUp")
+		elif y>0: $Bug/Animation.play("runDown")
+	else:	
+		$Bug/Animation.play("Idle")
+
+func handleActions():
+	if(Input.is_mouse_button_pressed(1) && timer.is_stopped()):
+		timer.start()
+		generate_bullet()

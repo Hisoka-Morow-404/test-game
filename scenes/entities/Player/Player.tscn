@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clcjpn7ppaips"]
+[gd_scene load_steps=14 format=3 uid="uid://clcjpn7ppaips"]
 
 [ext_resource type="Script" path="res://scenes/entities/Player/Player.gd" id="1_bsig4"]
 [ext_resource type="Texture2D" uid="uid://bl8dka1pkc1ap" path="res://scenes/entities/Player/Small-8-Direction-Characters_by_AxulArt.png" id="2_vcea5"]
@@ -86,11 +86,47 @@ tracks/0/keys = {
 "values": [8, 16, 24, 16]
 }
 
+[sub_resource type="Animation" id="Animation_mmwjk"]
+resource_name = "left_up_diag"
+length = 0.85
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 23, 31, 23]
+}
+
+[sub_resource type="Animation" id="Animation_b2ewb"]
+resource_name = "left_down_diag"
+length = 0.85
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 21, 29, 21]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2x1b6"]
 _data = {
 "Idle": SubResource("Animation_py4mt"),
 "RESET": SubResource("Animation_wvl8l"),
 "RunSide": SubResource("Animation_7kxam"),
+"left_down_diag": SubResource("Animation_b2ewb"),
+"left_up_diag": SubResource("Animation_mmwjk"),
 "runDown": SubResource("Animation_p3y1i"),
 "runUp": SubResource("Animation_7cxrn")
 }
