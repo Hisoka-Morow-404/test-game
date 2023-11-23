@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clcjpn7ppaips"]
+[gd_scene load_steps=15 format=3 uid="uid://clcjpn7ppaips"]
 
 [ext_resource type="Script" path="res://scenes/entities/Player/Player.gd" id="1_bsig4"]
 [ext_resource type="Texture2D" uid="uid://bl8dka1pkc1ap" path="res://scenes/entities/Player/Small-8-Direction-Characters_by_AxulArt.png" id="2_vcea5"]
@@ -134,6 +134,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_e276d"]
 radius = 16.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cie21"]
+bg_color = Color(0, 0.721569, 0.266667, 1)
+
 [node name="PlayerMain" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -163,3 +166,12 @@ position = Vector2(0, 10)
 script = ExtResource("3_bd5ht")
 
 [node name="Marker2D" type="Node2D" parent="Player/WeaponPosition"]
+
+[node name="HealthBar" type="ProgressBar" parent="Player"]
+offset_left = -24.0
+offset_top = -28.0
+offset_right = 23.0
+offset_bottom = -22.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_cie21")
+step = 1.0
+show_percentage = false

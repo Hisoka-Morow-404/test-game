@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 250.0
 var timer = Timer.new()
+var hp = 100
 
 
 func _ready():
@@ -16,7 +17,14 @@ func _ready():
 func _physics_process(delta):	
 	moveAndAnimate(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	handleActions()
+	checkLife()
 	
+func checkLife():
+	$HealthBar.value = hp
+	if hp<=0:
+		queue_free()
+		
+		
 func generate_bullet():
 	var marker:Node2D = get_node("WeaponPosition/Marker2D")
 	var bullet_standard = load("res://scenes/entities/bullet/StandardBullet/StandardBullet.tscn").instantiate()
@@ -25,10 +33,7 @@ func generate_bullet():
 	# l'add_child dovremme di default mettere la posizione adattata al padre
 	#bullet_standard.global_position = marker.global_position
 	#bullet_standard.position = $WeaponPosition/Marker2D.global_position
-	print("bullet direction: ", bullet_standard.bullet_direction)
-	print("posizione bullet: ", bullet_standard.global_position)
-	print("posizione marker: ", marker.global_position)
-	print("Posizione player: ", self.global_position)
+#
 	self.add_child(bullet_standard)
 
 func moveAndAnimate(x,y):
@@ -36,20 +41,7 @@ func moveAndAnimate(x,y):
 	animate(x,y)
 	
 func move(x,y):
-	
-	var movement = Vector2(x,y)
-	movement.normalized() 
-	velocity = movement * SPEED
-#	if x:
-#		velocity.x = x * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-#	if y:
-#
-#		velocity.y = y * SPEED
-#	else:
-#		velocity.y = move_toward(velocity.y, 0, SPEED)
-	
+	velocity = Vector2(x,y).normalized() * SPEED
 	move_and_slide()
 	
 func animate(x,y):

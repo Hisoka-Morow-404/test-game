@@ -1,18 +1,20 @@
 extends CharacterBody2D
 
 
-
 var SPEED = 100
 var value = randf_range(-1, 1)
 var direction = Vector2(value,value).normalized()
 var timer = Timer.new()
 var hp = 100
 var target
+var uuid 
 
 func _ready():
 	timer.wait_time = 3
 	timer.one_shot = true
+	uuid =ResourceUID.create_id()
 	add_child(timer)
+	updateHealthBar()
 
 func _physics_process(delta):
 	if target:
@@ -45,5 +47,10 @@ func _on_fov_body_exited(body):
 		target = null
 
 func isAlive():
+	updateHealthBar()
 	if hp <= 0 :
 		queue_free()
+
+
+func updateHealthBar():
+	$HealthBar.value=hp
