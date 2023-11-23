@@ -35,15 +35,19 @@ func moveAndAnimate(x,y):
 	animate(x,y)
 	
 func move(x,y):
-	if x:
-		velocity.x = x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if y:
-		
-		velocity.y = y * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	var movement = Vector2(x,y)
+	movement.normalized() 
+	velocity = movement * SPEED
+#	if x:
+#		velocity.x = x * SPEED
+#	else:
+#		velocity.x = move_toward(velocity.x, 0, SPEED)
+#	if y:
+#
+#		velocity.y = y * SPEED
+#	else:
+#		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
 	
