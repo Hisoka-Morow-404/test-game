@@ -24,11 +24,12 @@ func generate_bullet():
 	#Il problema dovrebe essere che istanziando il marker da codice prende la posizione della sua scena,
 	# l'add_child dovremme di default mettere la posizione adattata al padre
 	#bullet_standard.global_position = marker.global_position
+	#bullet_standard.position = $WeaponPosition/Marker2D.global_position
 	print("bullet direction: ", bullet_standard.bullet_direction)
 	print("posizione bullet: ", bullet_standard.global_position)
 	print("posizione marker: ", marker.global_position)
 	print("Posizione player: ", self.global_position)
-	get_parent().add_child(bullet_standard)
+	self.add_child(bullet_standard)
 
 func moveAndAnimate(x,y):
 	move(x,y)
