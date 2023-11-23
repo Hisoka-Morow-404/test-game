@@ -54,3 +54,8 @@ func isAlive():
 
 func updateHealthBar():
 	$HealthBar.value=hp
+
+
+func _on_dmg_body_entered(body):
+	if "Player" in body.get_groups():
+		body.hp-=10

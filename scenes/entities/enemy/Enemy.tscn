@@ -2,16 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://bl8dka1pkc1ap" path="res://scenes/entities/Player/Small-8-Direction-Characters_by_AxulArt.png" id="1_e6y53"]
 [ext_resource type="Script" path="res://scenes/entities/enemy/Enemy.gd" id="1_v0647"]
-[ext_resource type="Script" path="res://scenes/entities/enemy/RayCast2D.gd" id="3_pk3tw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auyrq"]
-size = Vector2(18, 24)
+size = Vector2(15, 33)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gikqo"]
 radius = 200.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhf3f"]
 bg_color = Color(0.85098, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y802g"]
+size = Vector2(17, 35)
 
 [node name="EnemyMain" type="Node2D"]
 
@@ -26,7 +28,7 @@ vframes = 12
 frame = 84
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(-1, 4)
+position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_auyrq")
 
 [node name="FOV" type="Area2D" parent="Enemy"]
@@ -43,9 +45,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_nhf3f")
 step = 1.0
 show_percentage = false
 
-[node name="RayCast2D" type="RayCast2D" parent="Enemy"]
-collision_mask = 4294967295
-script = ExtResource("3_pk3tw")
+[node name="DMG" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/DMG"]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_y802g")
+debug_color = Color(0.929412, 0, 0.654902, 0.419608)
 
 [connection signal="body_entered" from="Enemy/FOV" to="Enemy" method="_on_fov_body_entered"]
 [connection signal="body_exited" from="Enemy/FOV" to="Enemy" method="_on_fov_body_exited"]
+[connection signal="body_entered" from="Enemy/DMG" to="Enemy" method="_on_dmg_body_entered"]
