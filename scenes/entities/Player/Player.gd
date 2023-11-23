@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 250.0
 var timer = Timer.new()
 var hp = 100
+var is_damaged = false
+var is_invulnerable = false
 
 
 func _ready():
@@ -18,6 +20,10 @@ func _physics_process(delta):
 	moveAndAnimate(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	handleActions()
 	checkLife()
+	if(is_damaged):
+		is_invulnerable = true
+		await get_tree().create_timer(20).timeout
+		is_invulnerable = false
 	
 func checkLife():
 	$HealthBar.value = hp

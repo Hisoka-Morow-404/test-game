@@ -57,5 +57,6 @@ func updateHealthBar():
 
 
 func _on_dmg_body_entered(body):
-	if "Player" in body.get_groups():
+	if "Player" in body.get_groups() and !body.is_invulnerable:
 		body.hp-=10
+		body.is_damaged = true
