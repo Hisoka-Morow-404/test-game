@@ -21,7 +21,13 @@ func generate_bullet():
 	var marker:Node2D = get_node("WeaponPosition/Marker2D")
 	var bullet_standard = load("res://scenes/entities/bullet/StandardBullet/StandardBullet.tscn").instantiate()
 	bullet_standard.bullet_direction = (get_global_mouse_position() - marker.global_position).normalized()
-	bullet_standard.position = marker.global_position
+	#Il problema dovrebe essere che istanziando il marker da codice prende la posizione della sua scena,
+	# l'add_child dovremme di default mettere la posizione adattata al padre
+	#bullet_standard.global_position = marker.global_position
+	print("bullet direction: ", bullet_standard.bullet_direction)
+	print("posizione bullet: ", bullet_standard.global_position)
+	print("posizione marker: ", marker.global_position)
+	print("Posizione player: ", self.global_position)
 	get_parent().add_child(bullet_standard)
 
 func moveAndAnimate(x,y):
